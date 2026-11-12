@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimiento uniforme y uniformemente acelerado | Guía-taller interactiva UTP</title>
+  <meta name="description" content="Guía-taller interactiva de Física para Administración del Medio Ambiente (UTP): conceptos de cinemática, MRU, MUA e interpretación de gráficas x–t, v–t y a–t, con simuladores y planos estilo GeoGebra.">
+  <meta name="author" content="Luis Hernando Blandón Dávila — Docente de Física — UTP">
+  <meta name="copyright" content="© 2026 Luis Hernando Blandón Dávila. Todos los derechos reservados.">
+  <!-- © 2026 Luis Hernando Blandón Dávila. Todos los derechos reservados. Prohibida su copia, modificación o distribución, total o parcial, sin autorización escrita del autor. -->
+  <meta name="theme-color" content="#0a0f1d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body class="theme-dark">
+<main class="sheets-wrapper" id="sheetsContainer">
+
+  <!-- ====================== HOJA 1 · PORTADA ====================== -->
+  <section class="sheet-page" id="sheet-1" data-nav="Portada"
+    data-badge="UTP" data-title="UNIVERSIDAD TECNOLÓGICA DE PEREIRA"
+    data-subtitle="Facultad de Ciencias Ambientales · Administración del Medio Ambiente · Física"
+    data-tag="GUÍA-TALLER N° 01" data-tag-sub="Cinemática en una dimensión">
+    <div class="sheet-body">
+      <div class="cover-hero">
+        <div class="cover-badge-top"><i class="fas fa-leaf"></i> Física para la gestión ambiental — Pereira (Risaralda)</div>
+        <h1>MOVIMIENTO UNIFORME <span>Y UNIFORMEMENTE ACELERADO</span></h1>
+        <p class="lead">Laboratorio virtual con cinco simuladores y planos cartesianos interactivos para leer el movimiento en sus gráficas \(x\)–\(t\), \(v\)–\(t\) y \(a\)–\(t\), con base en Serway y Jewett, capítulo 2.</p>
+      </div>
+
+      <div class="cover-image-container">
+        <img src="imagenes/portada.svg" alt="Paisaje andino con montañas, un río con un flotador, un sendero con un caminante, un bus eléctrico en la vía y dos gráficas: posición contra tiempo y velocidad contra tiempo">
+      </div>
+
+      <div class="cover-meta-grid">
+        <div class="cover-meta-item"><strong>Competencia</strong>Modela matemáticamente movimientos rectilíneos de situaciones ambientales y cotidianas e interpreta sus representaciones gráficas.</div>
+        <div class="cover-meta-item"><strong>Resultado de aprendizaje</strong>Calcula e interpreta posición, velocidad y aceleración en MRU y MUA a partir de ecuaciones, tablas y gráficas.</div>
+        <div class="cover-meta-item"><strong>Duración</strong>2 sesiones de 2 h y trabajo autónomo.</div>
+        <div class="cover-meta-item"><strong>Fuente</strong>Serway &amp; Jewett, <em>Física para ciencias e ingeniería</em>, cap. 2.</div>
+      </div>
+
+      <div class="cover-duo">
+        <article class="mission-banner">
+          <h3><i class="fas fa-compass"></i> TU MISIÓN EN LA CUENCA DEL OTÚN</h3>
+          <p>Formas parte de un <strong>equipo de gestión ambiental</strong>. Medirás la velocidad del agua con el método del flotador, describirás el recorrido de un guardabosques, analizarás cómo arranca y frena un bus eléctrico, leerás la gráfica de la ruta de un camión recolector y calcularás cuánta distancia necesita un conductor para no atropellar fauna silvestre. ¡La física del movimiento también es una herramienta ambiental!</p>
+        </article>
+        <article class="objectives-card">
+          <h4><i class="fas fa-bullseye"></i> Al terminar esta guía podrás…</h4>
+          <ul>
+            <li>Diferenciar posición, desplazamiento, distancia, velocidad, rapidez y aceleración, con sus unidades SI.</li>
+            <li>Aplicar las ecuaciones del MRU y del MUA a problemas ambientales y de movilidad.</li>
+            <li>Interpretar pendientes y áreas en las gráficas \(x\)–\(t\), \(v\)–\(t\) y \(a\)–\(t\) y construir unas a partir de otras.</li>
+          </ul>
+        </article>
+      </div>
+
+      <article class="student-data-card">
+        <h3><i class="fas fa-id-card"></i> Datos de identificación del estudiante</h3>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="inputStudentName">Nombre completo:</label>
+            <input type="text" id="inputStudentName" class="form-control" placeholder="Ej: Valentina Ospina Restrepo" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="selectSchool">Institución:</label>
+            <select id="selectSchool" class="form-control"></select>
+          </div>
+          <div class="form-group" id="customSchoolWrapper" style="display:none">
+            <label for="inputCustomSchool">Nombre de la institución:</label>
+            <input type="text" id="inputCustomSchool" class="form-control" placeholder="Escribe tu institución">
+          </div>
+          <div class="form-group">
+            <label for="selectGrade">Semestre y grupo:</label>
+            <div class="form-inline">
+              <select id="selectGrade" class="form-control"></select>
+              <input type="text" id="inputGroup" class="form-control narrow" placeholder="Grupo" value="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputDate">Fecha:</label>
+            <input type="text" id="inputDate" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-action btn-primary" id="btnStartGuide"><i class="fas fa-play"></i> INICIAR GUÍA Y SIMULACIONES</button>
+          <button type="button" class="btn-action btn-secondary" id="btnValidateData"><i class="fas fa-user-check"></i> VALIDAR DATOS</button>
+        </div>
+      </article>
+
+      <aside class="instructions-alert" role="note">
+        <h4><i class="fas fa-exclamation-circle"></i> Directrices obligatorias</h4>
+        <ul>
+          <li><strong>Transcripción manual:</strong> copia en tu cuaderno (o en tu informe) las definiciones, las gráficas \(x\)–\(t\), \(v\)–\(t\) y \(a\)–\(t\) con sus ejes rotulados y todos los cálculos con sus despejes.</li>
+          <li><strong>Unidades:</strong> trabaja en el SI (m, s, m/s, m/s²) y convierte: \(1\text{ m/s} = 3.6\text{ km/h}\).</li>
+          <li><strong>Laboratorio virtual:</strong> usa los cinco simuladores. Sus gráficas funcionan como GeoGebra: rueda o pellizco para el zoom, arrastra un eje para reescalarlo, haz clic en un punto para leer sus coordenadas y usa la paleta para cambiar colores y estilos.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 2 · CONCEPTOS BÁSICOS ====================== -->
+  <section class="sheet-page" id="sheet-2" data-nav="Conceptos"
+    data-badge="CONCEPTOS" data-title="POSICIÓN, DESPLAZAMIENTO, DISTANCIA Y VELOCIDAD MEDIA"
+    data-subtitle="Serway, cap. 2.1–2.2: posición, velocidad y rapidez"
+    data-tag="LECCIÓN 01" data-tag-sub="El lenguaje del movimiento">
+    <div class="sheet-body">
+      <div class="theory-columns">
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-blue">Definición fundamental</span>
+          <h4><i class="fas fa-location-crosshairs"></i> Referencia, posición y desplazamiento</h4>
+          <p>La <strong>cinemática</strong> describe el movimiento sin ocuparse de sus causas. Para describirlo eliges un <strong>sistema de referencia</strong>: un origen O, un eje con sentido positivo y un reloj. La <strong>posición</strong> \(x\) es la coordenada del móvil sobre ese eje, con signo. El <strong>desplazamiento</strong> es el cambio de posición:</p>
+          <div class="formula-box key">$$\Delta x = x_f - x_i$$</div>
+          <p>Solo depende de los puntos inicial y final y su signo indica el sentido. La <strong>distancia recorrida</strong> \(d\) es la longitud total del camino: es un escalar no negativo y siempre \(d \ge |\Delta x|\).</p>
+        </article>
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-green">Rapidez y velocidad</span>
+          <h4><i class="fas fa-gauge-high"></i> Velocidad media y rapidez media</h4>
+          <p>La <strong>velocidad media</strong> divide el desplazamiento entre el intervalo de tiempo; la <strong>rapidez media</strong> usa la distancia recorrida:</p>
+          <div class="formula-box">$$\bar v = \frac{\Delta x}{\Delta t} \qquad \bar r = \frac{d}{\Delta t}$$</div>
+          <p>Unidad SI: m/s (\(1\text{ m/s} = 3.6\text{ km/h}\)). La <strong>velocidad instantánea</strong> \(v = dx/dt\) es la pendiente de la gráfica \(x\)–\(t\) en un instante. La <strong>aceleración</strong> mide cuánto cambia la velocidad por unidad de tiempo: \(\bar a = \Delta v/\Delta t\), en m/s².</p>
+        </article>
+      </div>
+
+      <div class="example-box">
+        <h4><i class="fas fa-pencil-ruler"></i> Ejemplo resuelto: recorrido por un sendero ecológico</h4>
+        <div class="step"><span class="step-n">1</span><span>Un guardabosques sale de \(x_A = 50\text{ m}\), camina a \(1.0\text{ m/s}\) hasta \(x_B = 350\text{ m}\), observa aves \(60\text{ s}\) y regresa hasta \(x_C = 200\text{ m}\).</span></div>
+        <div class="step"><span class="step-n">2</span><span>\(d = 300 + 150 = 450\text{ m}\); \(\Delta x = 200 - 50 = 150\text{ m}\); \(\Delta t = 300 + 60 + 150 = 510\text{ s}\).</span></div>
+        <div class="step"><span class="step-n">3</span><span>\(\bar v = 150/510 \approx 0.29\text{ m/s}\) y \(\bar r = 450/510 \approx 0.88\text{ m/s}\).</span></div>
+        <div class="result">El mismo recorrido tiene dos «rapideces» muy distintas: la velocidad media ignora las idas y vueltas. Compruébalo en la Simulación 1.</div>
+      </div>
+
+      <figure class="scientific-figure-card">
+        <div class="svg-figure">
+          <svg viewBox="0 0 640 160" role="img" aria-label="Eje x de 0 a 400 metros con los puntos A, B y C; flechas de ida de A a B y de regreso de B a C; flecha de desplazamiento de A a C">
+            <defs>
+              <marker id="ah21" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+            </defs>
+            <g style="color: var(--sheet-faint)"><line x1="28" y1="95" x2="620" y2="95" stroke="currentColor" stroke-width="2" marker-end="url(#ah21)"/></g>
+            <g stroke="var(--sheet-faint)" stroke-width="1.5">
+              <line x1="40" y1="90" x2="40" y2="100"/><line x1="110" y1="90" x2="110" y2="100"/><line x1="180" y1="90" x2="180" y2="100"/><line x1="250" y1="90" x2="250" y2="100"/><line x1="320" y1="90" x2="320" y2="100"/><line x1="390" y1="90" x2="390" y2="100"/><line x1="460" y1="90" x2="460" y2="100"/><line x1="530" y1="90" x2="530" y2="100"/><line x1="600" y1="90" x2="600" y2="100"/>
+            </g>
+            <g font-family="Fira Code, monospace" font-size="12" fill="var(--sheet-muted)" text-anchor="middle">
+              <text x="40" y="114">0</text><text x="110" y="114">50</text><text x="180" y="114">100</text><text x="250" y="114">150</text><text x="320" y="114">200</text><text x="390" y="114">250</text><text x="460" y="114">300</text><text x="530" y="114">350</text><text x="600" y="114">400</text>
+            </g>
+            <text x="618" y="86" font-family="Inter" font-size="13" font-style="italic" font-weight="700" fill="var(--sheet-heading)" text-anchor="end">x (m)</text>
+            <text x="40" y="86" font-family="Inter" font-size="13" font-weight="700" fill="var(--sheet-heading)" text-anchor="middle">O</text>
+            <g style="color: var(--accent-2)"><line x1="110" y1="52" x2="528" y2="52" stroke="currentColor" stroke-width="3" marker-end="url(#ah21)"/></g>
+            <text x="320" y="44" font-family="Inter" font-size="13" font-weight="700" fill="var(--accent-2)" text-anchor="middle">ida: 300 m</text>
+            <g style="color: var(--hist-border)"><line x1="530" y1="70" x2="322" y2="70" stroke="currentColor" stroke-width="3" marker-end="url(#ah21)"/></g>
+            <text x="425" y="85" font-family="Inter" font-size="12" font-weight="700" fill="var(--hist-border)" text-anchor="middle">regreso: 150 m</text>
+            <circle cx="110" cy="95" r="7" fill="var(--ok-border)"/><circle cx="530" cy="95" r="7" fill="var(--warn-border)"/><circle cx="320" cy="95" r="7" fill="var(--bad-border)"/>
+            <g font-family="Inter" font-size="13" font-weight="800" fill="var(--sheet-heading)"><text x="98" y="78">A</text><text x="538" y="80">B</text><text x="308" y="80">C</text></g>
+            <g style="color: var(--accent)"><line x1="110" y1="132" x2="318" y2="132" stroke="currentColor" stroke-width="3.5" marker-end="url(#ah21)"/></g>
+            <text x="215" y="152" font-family="Inter" font-size="13" font-weight="700" fill="var(--accent)" text-anchor="middle">Δx = x<tspan baseline-shift="sub" font-size="10">C</tspan> − x<tspan baseline-shift="sub" font-size="10">A</tspan> = +150 m</text>
+            <text x="470" y="140" font-family="Inter" font-size="13" font-weight="700" fill="var(--sheet-heading)" text-anchor="middle">d = 300 m + 150 m = 450 m</text>
+          </svg>
+        </div>
+        <figcaption class="figure-caption"><strong>Figura 1.1 — Distancia y desplazamiento:</strong> el caminante recorre \(d = 450\text{ m}\) (ida y regreso), pero su desplazamiento solo es \(\Delta x = x_C - x_A = +150\text{ m}\). Por eso \(d \ge |\Delta x|\) y la rapidez media supera a la velocidad media. <span class="figure-source">Fuente: elaboración propia.</span></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== LAB 1 · LABORATORIO VIRTUAL ====================== -->
+  <section class="sheet-page" id="sheet-3" data-nav="Lab 1"
+    data-badge="LAB" data-title="LABORATORIO VIRTUAL 1: SENDERO ECOLÓGICO"
+    data-subtitle="Distancia, desplazamiento, velocidad media y gráfica x–t"
+    data-tag="LECCIÓN 01" data-tag-sub="Simulación y gráficas">
+    <div class="sheet-body">
+      <article class="sim-box-wrapper" aria-label="Simulador del recorrido por un sendero">
+        <div class="sim-header-bar">
+          <div class="sim-title"><i class="fas fa-person-hiking"></i> Simulación 1: Sendero ecológico y gráfica \(x\)–\(t\)</div>
+          <div class="sim-hint"><i class="fas fa-hand-pointer"></i> Arrastra las banderas A, B y C</div>
+        </div>
+        <div class="sim-canvas-container">
+          <canvas id="senderoSim" data-sim="SenderoSim"></canvas>
+          <div class="sim-overlay-telemetry"></div>
+        </div>
+        <div class="gg-grid">
+          <div class="gg-graph" data-gg="xt"></div>
+        </div>
+        <div class="sim-controls-grid">
+          <div class="control-card"><div class="control-label-group"><span>Rapidez al caminar</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="senderoSim" data-param="vc" data-unit="m/s" data-decimals="1" min="0.5" max="2" step="0.1" value="1"></div>
+          <div class="control-card"><div class="control-label-group"><span>Pausa en B (aves)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="senderoSim" data-param="tObs" data-unit="s" min="0" max="120" step="10" value="60"></div>
+          <div class="control-card"><div class="control-label-group"><span>Punto B (x<sub>B</sub>)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="senderoSim" data-param="xB" data-unit="m" min="0" max="400" step="10" value="350"></div>
+          <div class="control-card"><div class="control-label-group"><span>Punto C (x<sub>C</sub>)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="senderoSim" data-param="xC" data-unit="m" min="0" max="400" step="10" value="200"></div>
+        </div>
+        <div class="sim-actions-bar">
+          <button type="button" class="btn-sim-action btn-play" data-sim-target="senderoSim" data-action="toggle"
+            data-label-play="<i class='fas fa-play'></i> Iniciar recorrido" data-label-pause="<i class='fas fa-pause'></i> Pausar"></button>
+          <button type="button" class="btn-sim-action btn-reset" data-sim-target="senderoSim" data-action="reset"><i class="fas fa-undo"></i> Reiniciar</button>
+        </div>
+        <div class="sim-guide-questions"><strong>Experimenta:</strong>
+          <ol><li><em>Predice:</em> si C coincide con A (ida y regreso completos), ¿cuánto valen \(\Delta x\) y \(\bar v\)? ¿Y la rapidez media? Verifícalo.</li><li><em>Mide:</em> ¿qué forma tiene la gráfica \(x\)–\(t\) durante la observación de aves? Haz clic sobre ella y explica qué significa su pendiente.</li></ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 3 · MRU ====================== -->
+  <section class="sheet-page" id="sheet-4" data-nav="MRU"
+    data-badge="MRU" data-title="MOVIMIENTO RECTILÍNEO UNIFORME (MRU)"
+    data-subtitle="Serway, cap. 2.3: partícula bajo velocidad constante"
+    data-tag="LECCIÓN 02" data-tag-sub="Velocidad constante">
+    <div class="sheet-body">
+      <div class="theory-columns">
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-blue">Modelo de análisis</span>
+          <h4><i class="fas fa-arrow-right-long"></i> ¿Cuándo un movimiento es uniforme?</h4>
+          <p>Un cuerpo describe un <strong>MRU</strong> cuando se mueve en línea recta con <strong>velocidad constante</strong>: recorre desplazamientos iguales en tiempos iguales, su aceleración es nula y la velocidad media coincide con la instantánea. Si en \(t = 0\) está en \(x_0\):</p>
+          <div class="formula-box key">$$x(t) = x_0 + v\,t$$</div>
+          <p>Es un <em>modelo</em>: un flotador en un tramo recto y homogéneo de un río o un vehículo con control de crucero se aproximan a él.</p>
+        </article>
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-violet">Interpretación gráfica</span>
+          <h4><i class="fas fa-chart-line"></i> Las tres gráficas del MRU</h4>
+          <ul>
+            <li><strong>\(x\)–\(t\):</strong> recta cuya <strong>pendiente es la velocidad</strong>, \(v = \Delta x/\Delta t\). Pendiente positiva, nula o negativa: avanza en sentido +, reposa o avanza en sentido −.</li>
+            <li><strong>\(v\)–\(t\):</strong> recta horizontal; el <strong>área bajo ella</strong> es el desplazamiento.</li>
+            <li><strong>\(a\)–\(t\):</strong> coincide con el eje \(t\), porque \(a = 0\).</li>
+          </ul>
+          <div class="formula-box">$$\Delta x = v\,\Delta t$$</div>
+        </article>
+      </div>
+
+      <div class="example-box">
+        <h4><i class="fas fa-water"></i> Ejemplo resuelto: método del flotador en el río Otún</h4>
+        <div class="step"><span class="step-n">1</span><span>Entre dos estaciones separadas \(L = 20\text{ m}\), un flotador tarda \(\Delta t = 25\text{ s}\): \(v_{sup} = L/\Delta t = 0.80\text{ m/s}\).</span></div>
+        <div class="step"><span class="step-n">2</span><span>Con \(x_0 = 0\): \(x(t) = 0.80\,t\); a los \(40\text{ s}\) el flotador está en \(x = 32\text{ m}\).</span></div>
+        <div class="step"><span class="step-n">3</span><span>El agua del fondo es más lenta, así que se estima \(\bar v \approx 0.85\,v_{sup}\). Si la sección mide \(A = 3.0\text{ m}^2\): \(Q = \bar v A \approx 0.85(0.80)(3.0) = 2.04\text{ m}^3/\text{s}\).</span></div>
+        <div class="result">El caudal \(Q\) es un dato básico para gestionar concesiones de agua y vigilar sequías: con un cronómetro y el modelo MRU obtienes una primera estimación en campo.</div>
+      </div>
+
+      <figure class="scientific-figure-card">
+        <div class="svg-figure">
+          <svg viewBox="0 0 640 175" role="img" aria-label="Izquierda: gráfica posición tiempo con tres rectas de pendiente positiva, nula y negativa. Derecha: gráfica velocidad tiempo horizontal con el área rectangular sombreada">
+            <defs>
+              <marker id="ah31" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+            </defs>
+            <g style="color: var(--sheet-heading)" stroke="currentColor" stroke-width="1.8">
+              <line x1="45" y1="145" x2="305" y2="145" marker-end="url(#ah31)"/><line x1="45" y1="145" x2="45" y2="14" marker-end="url(#ah31)"/>
+              <line x1="370" y1="145" x2="630" y2="145" marker-end="url(#ah31)"/><line x1="370" y1="145" x2="370" y2="14" marker-end="url(#ah31)"/>
+            </g>
+            <g font-family="Inter" font-size="14" font-style="italic" font-weight="700" fill="var(--sheet-heading)">
+              <text x="300" y="164">t</text><text x="57" y="26">x</text><text x="625" y="164">t</text><text x="382" y="26">v</text>
+            </g>
+            <line x1="45" y1="115" x2="285" y2="35" stroke="var(--accent-2)" stroke-width="3"/>
+            <line x1="45" y1="105" x2="285" y2="105" stroke="var(--sheet-faint)" stroke-width="3"/>
+            <line x1="45" y1="70" x2="285" y2="135" stroke="var(--bad-border)" stroke-width="3"/>
+            <g stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4 3"><line x1="205" y1="61.7" x2="265" y2="61.7"/><line x1="265" y1="61.7" x2="265" y2="41.7"/></g>
+            <g font-family="Inter" font-size="12" font-weight="700">
+              <text x="235" y="76" fill="var(--accent-2)" text-anchor="middle">Δt</text><text x="270" y="56" fill="var(--accent-2)">Δx</text>
+              <text x="285" y="28" fill="var(--accent-2)" text-anchor="end">v &gt; 0</text>
+              <text x="285" y="99" fill="var(--sheet-muted)" text-anchor="end">v = 0 (reposo)</text>
+              <text x="282" y="126" fill="var(--bad-border)" text-anchor="end">v &lt; 0</text>
+            </g>
+            <rect x="400" y="70" width="160" height="75" fill="var(--accent)" opacity="0.2"/>
+            <g stroke="var(--sheet-faint)" stroke-width="1.2" stroke-dasharray="4 3"><line x1="400" y1="70" x2="400" y2="145"/><line x1="560" y1="70" x2="560" y2="145"/></g>
+            <line x1="370" y1="70" x2="610" y2="70" stroke="var(--hist-border)" stroke-width="3"/>
+            <g font-family="Inter" font-size="13" font-weight="700">
+              <text x="480" y="113" fill="var(--accent)" text-anchor="middle">área = Δx = v·Δt</text>
+              <text x="600" y="62" fill="var(--hist-border)" text-anchor="end">v constante</text>
+              <text x="400" y="162" fill="var(--sheet-muted)" text-anchor="middle">t₁</text><text x="560" y="162" fill="var(--sheet-muted)" text-anchor="middle">t₂</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="figure-caption"><strong>Figura 2.1 — Gráficas del MRU:</strong> en \(x\)–\(t\) la pendiente \(\Delta x/\Delta t\) es la velocidad (positiva, nula o negativa); en \(v\)–\(t\) la recta es horizontal y el área del rectángulo entre \(t_1\) y \(t_2\) es el desplazamiento \(\Delta x = v\,\Delta t\). <span class="figure-source">Fuente: elaboración propia.</span></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ====================== LAB 2 · LABORATORIO VIRTUAL ====================== -->
+  <section class="sheet-page" id="sheet-5" data-nav="Lab 2"
+    data-badge="LAB" data-title="LABORATORIO VIRTUAL 2: FLOTADOR EN EL RÍO"
+    data-subtitle="MRU: pendiente de x–t y área bajo v–t"
+    data-tag="LECCIÓN 02" data-tag-sub="Simulación y gráficas">
+    <div class="sheet-body">
+      <article class="sim-box-wrapper" aria-label="Simulador del método del flotador en MRU">
+        <div class="sim-header-bar">
+          <div class="sim-title"><i class="fas fa-water"></i> Simulación 2: Flotador en el río (MRU)</div>
+          <div class="sim-hint"><i class="fas fa-hand-pointer"></i> Arrastra el flotador para elegir \(x_0\)</div>
+        </div>
+        <div class="sim-canvas-container">
+          <canvas id="rioSim" data-sim="RioSim"></canvas>
+          <div class="sim-overlay-telemetry right"></div>
+        </div>
+        <div class="gg-grid cols-2">
+          <div class="gg-graph" data-gg="xt"></div>
+          <div class="gg-graph" data-gg="vt"></div>
+        </div>
+        <div class="sim-controls-grid">
+          <div class="control-card"><div class="control-label-group"><span>Posición inicial (x₀)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="rioSim" data-param="x0" data-unit="m" min="-10" max="10" step="1" value="0"></div>
+          <div class="control-card"><div class="control-label-group"><span>Rapidez de la corriente</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="rioSim" data-param="v" data-unit="m/s" data-decimals="2" min="0.2" max="1.8" step="0.05" value="0.8"></div>
+        </div>
+        <div class="sim-actions-bar">
+          <button type="button" class="btn-sim-action btn-play" data-sim-target="rioSim" data-action="toggle"
+            data-label-play="<i class='fas fa-play'></i> Soltar flotador" data-label-pause="<i class='fas fa-pause'></i> Pausar"></button>
+          <button type="button" class="btn-sim-action btn-reset" data-sim-target="rioSim" data-action="reset"><i class="fas fa-undo"></i> Reiniciar</button>
+          <label class="sim-check"><input type="checkbox" data-sim-target="rioSim" data-param="flip"> Eje x apuntando río arriba</label>
+        </div>
+        <div class="sim-guide-questions"><strong>Experimenta:</strong>
+          <ol><li><em>Predice:</em> si orientas el eje \(x\) río arriba, ¿cambia el movimiento del flotador? ¿Qué les pasa al signo de \(v\) y a la pendiente de \(x\)–\(t\)?</li><li><em>Mide:</em> con \(v = 0.80\text{ m/s}\), lee el \(\Delta t\) entre A y B y comprueba \(v = L/\Delta t\). Luego compara el área bajo \(v\)–\(t\) a los \(20\text{ s}\) con el \(\Delta x\) de la gráfica \(x\)–\(t\).</li></ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 4 · MUA ====================== -->
+  <section class="sheet-page" id="sheet-6" data-nav="MUA"
+    data-badge="MUA" data-title="MOVIMIENTO UNIFORMEMENTE ACELERADO (MUA)"
+    data-subtitle="Serway, cap. 2.4–2.7: partícula bajo aceleración constante"
+    data-tag="LECCIÓN 03" data-tag-sub="Aceleración constante">
+    <div class="sheet-body">
+      <div class="theory-columns">
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-blue">Definición fundamental</span>
+          <h4><i class="fas fa-forward"></i> Aceleración constante</h4>
+          <p>Un movimiento rectilíneo es <strong>uniformemente acelerado</strong> cuando su aceleración \(a = \Delta v/\Delta t\) es constante: la velocidad cambia en cantidades iguales en tiempos iguales. Si \(v\) y \(a\) tienen el mismo signo, el móvil acelera; si tienen signos opuestos, frena. Con \(t_0 = 0\):</p>
+          <div class="formula-box key">$$v = v_0 + a\,t \qquad x = x_0 + v_0\,t + \tfrac12 a\,t^2$$</div>
+        </article>
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-amber">Ecuación sin tiempo</span>
+          <h4><i class="fas fa-link"></i> Velocidad y posición</h4>
+          <p>Al eliminar \(t\) entre las dos ecuaciones se obtiene una relación útil cuando no conoces el tiempo:</p>
+          <div class="formula-box">$$v^2 = v_0^2 + 2a\,\Delta x$$</div>
+          <p>Gráficas: \(x\)–\(t\) es una <strong>parábola</strong> cuya tangente tiene pendiente \(v\); \(v\)–\(t\) es una <strong>recta de pendiente \(a\)</strong> y su área es \(\Delta x\); \(a\)–\(t\) es horizontal y su área es \(\Delta v\). La <strong>caída libre</strong> sin aire es un MUA con \(a = -g = -9.8\text{ m/s}^2\) (eje hacia arriba).</p>
+        </article>
+      </div>
+
+      <figure class="scientific-figure-card">
+        <div class="svg-figure">
+          <svg viewBox="0 0 640 132" role="img" aria-label="Dos filas de posiciones tomadas a intervalos iguales: en MRU los puntos están igualmente separados; en MUA desde el reposo la separación crece">
+            <g font-family="Inter" font-size="13" font-weight="700">
+              <text x="40" y="20" fill="var(--accent-2)">MRU: Δx iguales en intervalos iguales</text>
+              <text x="40" y="80" fill="var(--bad-border)">MUA desde el reposo: Δx en razón 1 : 3 : 5 : 7 : …</text>
+            </g>
+            <line x1="30" y1="44" x2="615" y2="44" stroke="var(--sheet-faint)" stroke-width="1.5"/>
+            <line x1="30" y1="106" x2="615" y2="106" stroke="var(--sheet-faint)" stroke-width="1.5"/>
+            <g fill="var(--accent-2)"><circle cx="40" cy="44" r="7"/><circle cx="110" cy="44" r="7"/><circle cx="180" cy="44" r="7"/><circle cx="250" cy="44" r="7"/><circle cx="320" cy="44" r="7"/><circle cx="390" cy="44" r="7"/><circle cx="460" cy="44" r="7"/><circle cx="530" cy="44" r="7"/><circle cx="600" cy="44" r="7"/></g>
+            <g fill="var(--bad-border)" fill-opacity="0.85"><circle cx="40" cy="106" r="7"/><circle cx="48.75" cy="106" r="7"/><circle cx="75" cy="106" r="7"/><circle cx="118.75" cy="106" r="7"/><circle cx="180" cy="106" r="7"/><circle cx="258.75" cy="106" r="7"/><circle cx="355" cy="106" r="7"/><circle cx="468.75" cy="106" r="7"/><circle cx="600" cy="106" r="7"/></g>
+            <g font-family="Fira Code, monospace" font-size="11" fill="var(--sheet-muted)" text-anchor="middle">
+              <text x="219" y="126">9</text><text x="307" y="126">11</text><text x="412" y="126">13</text><text x="534" y="126">15</text>
+              <text x="149" y="126">7</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="figure-caption"><strong>Figura 3.1 — Fotografía estroboscópica:</strong> en el MRU las posiciones quedan igualmente espaciadas; en el MUA desde el reposo, como \(x = \tfrac12 a t^2\), los tramos recorridos en intervalos iguales crecen como 1 : 3 : 5 : 7…, regularidad que Galileo Galilei (1564–1642) estudió con planos inclinados y publicó en 1638. <span class="figure-source">Fuente: elaboración propia.</span></figcaption>
+      </figure>
+
+      <aside class="callout callout-tip"><h4><i class="fas fa-seedling"></i> Conducción eficiente</h4><p>Arrancar con aceleraciones moderadas y anticipar el frenado reduce el consumo de energía. En un vehículo eléctrico, además, parte de la energía del frenado se recupera (frenado regenerativo).</p></aside>
+
+    </div>
+  </section>
+
+  <!-- ====================== LAB 3 · LABORATORIO VIRTUAL ====================== -->
+  <section class="sheet-page" id="sheet-7" data-nav="Lab 3"
+    data-badge="LAB" data-title="LABORATORIO VIRTUAL 3: BUS ELÉCTRICO"
+    data-subtitle="MUA: parábola, tangente, pendiente y áreas"
+    data-tag="LECCIÓN 03" data-tag-sub="Simulación y gráficas">
+    <div class="sheet-body">
+      <article class="sim-box-wrapper" aria-label="Simulador de un bus eléctrico en MUA">
+        <div class="sim-header-bar">
+          <div class="sim-title"><i class="fas fa-bus"></i> Simulación 3: Bus eléctrico con aceleración constante</div>
+          <div class="sim-hint"><i class="fas fa-camera"></i> Una imagen por segundo (estroboscopia)</div>
+        </div>
+        <div class="sim-canvas-container">
+          <canvas id="busSim" data-sim="BusSim"></canvas>
+          <div class="sim-overlay-telemetry right"></div>
+        </div>
+        <div class="gg-grid">
+          <div class="gg-graph" data-gg="xt"></div>
+          <div class="gg-graph" data-gg="vt"></div>
+          <div class="gg-graph" data-gg="at"></div>
+        </div>
+        <div class="sim-controls-grid">
+          <div class="control-card"><div class="control-label-group"><span>Velocidad inicial (v₀)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="busSim" data-param="v0" data-unit="m/s" data-decimals="1" min="0" max="15" step="0.5" value="2"></div>
+          <div class="control-card"><div class="control-label-group"><span>Aceleración (a)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="busSim" data-param="a" data-unit="m/s²" data-decimals="1" min="-2" max="2" step="0.1" value="1.2"></div>
+        </div>
+        <div class="sim-actions-bar">
+          <button type="button" class="btn-sim-action btn-play" data-sim-target="busSim" data-action="toggle"
+            data-label-play="<i class='fas fa-play'></i> Arrancar (10 s)" data-label-pause="<i class='fas fa-pause'></i> Pausar"></button>
+          <button type="button" class="btn-sim-action btn-reset" data-sim-target="busSim" data-action="reset"><i class="fas fa-undo"></i> Reiniciar</button>
+        </div>
+        <div class="sim-guide-questions"><strong>Experimenta:</strong>
+          <ol><li><em>Predice:</em> con \(v_0 = 0\), ¿qué tramos recorre el bus en los segundos 1, 2 y 3? ¿Se cumple la razón 1 : 3 : 5? Compruébalo con la estroboscopia y la gráfica \(x\)–\(t\).</li><li><em>Mide:</em> pausa en \(t = 5\text{ s}\) y compara la pendiente de la tangente en \(x\)–\(t\) con el valor de \(v\) en \(v\)–\(t\). Con \(v_0 = 12\text{ m/s}\) y \(a = -2\text{ m/s}^2\), ¿cuándo y dónde se detiene?</li></ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 5 · INTERPRETACIÓN GRÁFICA ====================== -->
+  <section class="sheet-page" id="sheet-8" data-nav="Gráficas"
+    data-badge="GRÁFICAS" data-title="INTERPRETACIÓN GRÁFICA: PENDIENTES Y ÁREAS"
+    data-subtitle="Serway, cap. 2.2, 2.4 y 2.8: lectura de gráficas de movimiento"
+    data-tag="LECCIÓN 04" data-tag-sub="Leer el movimiento">
+    <div class="sheet-body">
+      <div class="theory-columns">
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-violet">Pendiente</span>
+          <h4><i class="fas fa-arrow-trend-up"></i> La pendiente es una tasa de cambio</h4>
+          <p>La pendiente de una gráfica mide cuánto cambia la variable vertical por cada segundo. La pendiente de la tangente a \(x\)–\(t\) es la velocidad; la pendiente de \(v\)–\(t\) es la aceleración:</p>
+          <div class="formula-box key">$$v = \frac{dx}{dt} \qquad a = \frac{dv}{dt}$$</div>
+          <p>Si la gráfica \(x\)–\(t\) se curva hacia arriba, \(a &gt; 0\); si se curva hacia abajo, \(a &lt; 0\). Un tramo horizontal en \(x\)–\(t\) significa reposo.</p>
+        </article>
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-green">Área</span>
+          <h4><i class="fas fa-chart-area"></i> El área acumula el cambio</h4>
+          <p>El área bajo \(v\)–\(t\) entre \(t_1\) y \(t_2\) es el desplazamiento; el área bajo \(a\)–\(t\) es el cambio de velocidad:</p>
+          <div class="formula-box">$$\Delta x = \int_{t_1}^{t_2} v\,dt \qquad \Delta v = \int_{t_1}^{t_2} a\,dt$$</div>
+          <p>El área por debajo del eje \(t\) cuenta como <strong>negativa</strong> (el móvil retrocede). La distancia recorrida suma todas las áreas en valor absoluto, por eso puede superar a \(|\Delta x|\).</p>
+        </article>
+      </div>
+
+      <table class="data-table">
+        <caption>Tabla 4.1 — Forma de las gráficas según el tipo de movimiento</caption>
+        <thead><tr><th>Movimiento</th><th>\(x\)–\(t\)</th><th>\(v\)–\(t\)</th><th>\(a\)–\(t\)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Reposo</strong></td><td>Recta horizontal</td><td>Sobre el eje (\(v = 0\))</td><td>Sobre el eje (\(a = 0\))</td></tr>
+          <tr><td><strong>MRU</strong></td><td>Recta inclinada (pendiente \(v\))</td><td>Recta horizontal (área \(\Delta x\))</td><td>Sobre el eje (\(a = 0\))</td></tr>
+          <tr><td><strong>MUA acelerando</strong></td><td>Parábola que se empina</td><td>Recta de pendiente \(a\)</td><td>Recta horizontal (área \(\Delta v\))</td></tr>
+          <tr><td><strong>MUA frenando</strong></td><td>Parábola que se aplana</td><td>Recta hacia \(v = 0\)</td><td>Horizontal, signo opuesto a \(v\)</td></tr>
+        </tbody>
+      </table>
+
+      <aside class="callout callout-history"><h4><i class="fas fa-landmark"></i> ¿Sabías que…?</h4><p>Hacia 1350, Nicole Oresme (c. 1320–1382) representó la velocidad de un movimiento uniformemente acelerado con una línea inclinada y mostró que el <strong>área</strong> bajo ella equivale a la distancia recorrida. Así demostró la regla de la velocidad media de los calculadores del Merton College de Oxford: \(\Delta x = \tfrac12 (v_0 + v)\,\Delta t\).</p></aside>
+
+    </div>
+  </section>
+
+  <!-- ====================== LAB 4 · LABORATORIO VIRTUAL ====================== -->
+  <section class="sheet-page" id="sheet-9" data-nav="Lab 4"
+    data-badge="LAB" data-title="LABORATORIO VIRTUAL 4: CAMIÓN RECOLECTOR"
+    data-subtitle="De la gráfica v–t a las gráficas x–t y a–t"
+    data-tag="LECCIÓN 04" data-tag-sub="Simulación y gráficas">
+    <div class="sheet-body">
+      <article class="sim-box-wrapper" aria-label="Simulador de interpretación gráfica de la ruta de un camión recolector">
+        <div class="sim-header-bar">
+          <div class="sim-title"><i class="fas fa-truck"></i> Simulación 4: Ruta de un camión recolector</div>
+          <div class="sim-hint"><i class="fas fa-hand-pointer"></i> Arrastra los vértices de la gráfica \(v\)–\(t\)</div>
+        </div>
+        <div class="sim-canvas-container">
+          <canvas id="graficaSim" data-sim="GraficaSim"></canvas>
+          <div class="sim-overlay-telemetry"></div>
+        </div>
+        <div class="gg-grid">
+          <div class="gg-graph" data-gg="vt"></div>
+          <div class="gg-graph" data-gg="xt"></div>
+          <div class="gg-graph" data-gg="at"></div>
+        </div>
+        <div class="sim-controls-grid">
+          <div class="control-card"><div class="control-label-group"><span>Escenario de la ruta</span><span class="control-val-badge"></span></div>
+            <select class="sim-select" data-sim-target="graficaSim" data-param="preset" aria-label="Escenario de la ruta">
+              <option value="1">1 · Arranque, crucero, frenado y parada</option>
+              <option value="2">2 · Crucero, frenado, parada y reversa</option>
+              <option value="3">3 · Aceleración constante (MUA puro)</option>
+            </select></div>
+        </div>
+        <div class="sim-actions-bar">
+          <button type="button" class="btn-sim-action btn-play" data-sim-target="graficaSim" data-action="toggle"
+            data-label-play="<i class='fas fa-play'></i> Recorrer la ruta" data-label-pause="<i class='fas fa-pause'></i> Pausar"></button>
+          <button type="button" class="btn-sim-action btn-reset" data-sim-target="graficaSim" data-action="reset"><i class="fas fa-undo"></i> Reiniciar</button>
+        </div>
+        <div class="sim-guide-questions"><strong>Experimenta:</strong>
+          <ol><li><em>Predice:</em> en el escenario 1, ¿en qué tramos la gráfica \(x\)–\(t\) será una recta y en cuáles una parábola? Recorre la ruta y verifica.</li><li><em>Mide:</em> calcula a mano el área bajo \(v\)–\(t\) en cada tramo del escenario 1 y compárala con el \(\Delta x\) total. En el escenario 2, ¿por qué la distancia supera a \(|\Delta x|\)?</li></ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 6 · APLICACIÓN: FAUNA ====================== -->
+  <section class="sheet-page" id="sheet-10" data-nav="Fauna en la vía"
+    data-badge="APLICACIÓN" data-title="TIEMPO DE REACCIÓN Y DISTANCIA DE DETENCIÓN"
+    data-subtitle="Serway, cap. 2.6: MRU y MUA combinados en un problema ambiental"
+    data-tag="LECCIÓN 05" data-tag-sub="Física y fauna silvestre">
+    <div class="sheet-body">
+      <div class="theory-columns">
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-rose">Contexto ambiental</span>
+          <h4><i class="fas fa-paw"></i> Fauna en la vía: MRU + MUA</h4>
+          <p>El atropellamiento es una causa importante de muerte de fauna silvestre en vías que bordean bosques, como las que conducen a las áreas protegidas de Risaralda. Cuando un conductor ve un animal, primero avanza en <strong>MRU</strong> durante el <strong>tiempo de percepción–reacción</strong> \(t_r\) (del orden de 1 a 2 s) y después frena en <strong>MUA</strong> con desaceleración de magnitud \(a\):</p>
+          <div class="formula-box key">$$d_{det} = v_0\,t_r + \frac{v_0^2}{2a}$$</div>
+        </article>
+        <article class="theory-block">
+          <span class="concept-pill-badge badge-amber">Escalamiento</span>
+          <h4><i class="fas fa-gauge-simple-high"></i> ¿Por qué importa tanto la rapidez?</h4>
+          <p>La distancia de reacción \(d_r = v_0 t_r\) crece en proporción a \(v_0\), pero la de frenado \(d_f = v_0^2/(2a)\) crece con su cuadrado: al duplicar la rapidez, \(d_f\) se <strong>cuadruplica</strong>. A \(60\text{ km/h}\) (\(16.7\text{ m/s}\)), con \(t_r = 1.5\text{ s}\) y \(a = 7\text{ m/s}^2\) (asfalto seco):</p>
+          <div class="formula-box">$$d_{det} = 25.0 + 19.8 = 44.8\text{ m}$$</div>
+          <p>En pavimento mojado \(a\) baja a unos \(4.5\text{ m/s}^2\) (valores típicos aproximados) y la distancia aumenta.</p>
+        </article>
+      </div>
+
+      <figure class="scientific-figure-card">
+        <div class="svg-figure">
+          <svg viewBox="0 0 640 175" role="img" aria-label="Gráfica velocidad tiempo: tramo horizontal durante el tiempo de reacción con área rectangular y tramo descendente durante el frenado con área triangular">
+            <defs>
+              <marker id="ah61" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+            </defs>
+            <rect x="60" y="45" width="180" height="100" fill="var(--warn-border)" opacity="0.25"/>
+            <path d="M240,45 L480,145 L240,145 Z" fill="var(--bad-border)" opacity="0.2"/>
+            <g style="color: var(--sheet-heading)" stroke="currentColor" stroke-width="1.8">
+              <line x1="60" y1="145" x2="625" y2="145" marker-end="url(#ah61)"/><line x1="60" y1="145" x2="60" y2="12" marker-end="url(#ah61)"/>
+            </g>
+            <path d="M60,45 L240,45 L480,145" fill="none" stroke="var(--hist-border)" stroke-width="3.5"/>
+            <line x1="240" y1="45" x2="240" y2="145" stroke="var(--sheet-faint)" stroke-width="1.2" stroke-dasharray="4 3"/>
+            <g font-family="Inter" font-weight="700">
+              <text x="620" y="164" font-size="14" font-style="italic" fill="var(--sheet-heading)" text-anchor="end">t</text>
+              <text x="72" y="24" font-size="14" font-style="italic" fill="var(--sheet-heading)">v</text>
+              <text x="52" y="50" font-size="13" fill="var(--sheet-heading)" text-anchor="end">v₀</text>
+              <text x="150" y="98" font-size="13" fill="var(--warn-border)" text-anchor="middle">d<tspan baseline-shift="sub" font-size="10">r</tspan> = v₀ · t<tspan baseline-shift="sub" font-size="10">r</tspan></text>
+              <text x="150" y="116" font-size="11" fill="var(--warn-border)" text-anchor="middle">reacción (MRU)</text>
+              <text x="300" y="122" font-size="13" fill="var(--bad-border)" text-anchor="middle">d<tspan baseline-shift="sub" font-size="10">f</tspan> = v₀²/(2a)</text>
+              <text x="300" y="138" font-size="11" fill="var(--bad-border)" text-anchor="middle">frenado (MUA)</text>
+              <text x="240" y="162" font-size="12" fill="var(--sheet-muted)" text-anchor="middle">t<tspan baseline-shift="sub" font-size="9">r</tspan></text>
+              <text x="480" y="162" font-size="12" fill="var(--sheet-muted)" text-anchor="middle">t<tspan baseline-shift="sub" font-size="9">r</tspan> + v₀/a</text>
+              <text x="380" y="80" font-size="12" fill="var(--hist-border)">pendiente = −a</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="figure-caption"><strong>Figura 5.1 — La distancia de detención es un área:</strong> el rectángulo bajo \(v\)–\(t\) es la distancia de reacción \(v_0 t_r\) y el triángulo es la de frenado \(\tfrac12 v_0 (v_0/a) = v_0^2/(2a)\); su suma da \(d_{det}\). <span class="figure-source">Fuente: elaboración propia.</span></figcaption>
+      </figure>
+
+      <aside class="callout callout-info"><h4><i class="fas fa-shield-heart"></i> Gestión ambiental de vías</h4><p>Los pasos de fauna, la señalización y las zonas de velocidad reducida en corredores biológicos se justifican con esta ecuación: bajar \(v_0\) acorta mucho la distancia de detención.</p></aside>
+
+    </div>
+  </section>
+
+  <!-- ====================== LAB 5 · LABORATORIO VIRTUAL ====================== -->
+  <section class="sheet-page" id="sheet-11" data-nav="Lab 5"
+    data-badge="LAB" data-title="LABORATORIO VIRTUAL 5: FAUNA EN LA VÍA"
+    data-subtitle="Distancia de reacción y de frenado como áreas"
+    data-tag="LECCIÓN 05" data-tag-sub="Simulación y gráficas">
+    <div class="sheet-body">
+      <article class="sim-box-wrapper" aria-label="Simulador de distancia de detención ante fauna en la vía">
+        <div class="sim-header-bar">
+          <div class="sim-title"><i class="fas fa-car-side"></i> Simulación 5: ¿Alcanza a detenerse?</div>
+          <div class="sim-hint"><i class="fas fa-hand-pointer"></i> Arrastra el animal para cambiar D</div>
+        </div>
+        <div class="sim-canvas-container">
+          <canvas id="faunaSim" data-sim="FaunaSim"></canvas>
+          <div class="sim-overlay-telemetry"></div>
+        </div>
+        <div class="gg-grid cols-2">
+          <div class="gg-graph" data-gg="vt"></div>
+          <div class="gg-graph" data-gg="xt"></div>
+        </div>
+        <div class="sim-controls-grid">
+          <div class="control-card"><div class="control-label-group"><span>Rapidez inicial (v₀)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="faunaSim" data-param="v0k" data-unit="km/h" min="30" max="100" step="5" value="60"></div>
+          <div class="control-card"><div class="control-label-group"><span>Tiempo de reacción (t<sub>r</sub>)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="faunaSim" data-param="tr" data-unit="s" data-decimals="1" min="0.5" max="2.5" step="0.1" value="1.5"></div>
+          <div class="control-card"><div class="control-label-group"><span>Distancia al animal (D)</span><span class="control-val-badge"></span></div>
+            <input type="range" class="slider-custom" data-sim-target="faunaSim" data-param="D" data-unit="m" min="15" max="120" step="1" value="50"></div>
+          <div class="control-card"><div class="control-label-group"><span>Estado de la vía</span><span class="control-val-badge"></span></div>
+            <select class="sim-select" data-sim-target="faunaSim" data-param="af" aria-label="Estado de la vía">
+              <option value="7">Asfalto seco (a ≈ 7.0 m/s²)</option>
+              <option value="4.5">Asfalto mojado (a ≈ 4.5 m/s²)</option>
+              <option value="3">Grava suelta (a ≈ 3.0 m/s²)</option>
+            </select></div>
+        </div>
+        <div class="sim-actions-bar">
+          <button type="button" class="btn-sim-action btn-play" data-sim-target="faunaSim" data-action="toggle"
+            data-label-play="<i class='fas fa-play'></i> ¡El conductor ve al animal!" data-label-pause="<i class='fas fa-pause'></i> Pausar"></button>
+          <button type="button" class="btn-sim-action btn-reset" data-sim-target="faunaSim" data-action="reset"><i class="fas fa-undo"></i> Reiniciar</button>
+        </div>
+        <div class="sim-guide-questions"><strong>Experimenta:</strong>
+          <ol><li><em>Predice:</em> con \(D = 50\text{ m}\), asfalto seco y \(t_r = 1.5\text{ s}\), ¿cuál es la rapidez máxima (en km/h) para no atropellar al animal? Pruébala en el simulador.</li><li><em>Mide:</em> haz clic en las gráficas para leer las áreas amarilla y roja de \(v\)–\(t\) y compáralas con \(d_r\) y \(d_f\). ¿Qué tramo de \(x\)–\(t\) es recto y cuál es parabólico?</li></ol>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 7 · TALLER ====================== -->
+  <section class="sheet-page" id="sheet-12" data-nav="Taller"
+    data-badge="TALLER" data-title="TALLER EVALUATIVO INTERACTIVO"
+    data-subtitle="Cálculo, lectura de gráficas y argumentación científica"
+    data-tag="EVALUACIÓN" data-tag-sub="Autocalificable">
+    <div class="sheet-body">
+      <div class="quiz-header-card">
+        <div>
+          <h4><i class="fas fa-tasks"></i> Resuelve, verifica y transcribe</h4>
+          <p>Resuelve primero en tu cuaderno, verifica aquí tu resultado y despliega el procedimiento para comparar. Usa \(g = 9.8\text{ m/s}^2\) cuando se necesite.</p>
+        </div>
+        <div class="quiz-modes">
+          <button type="button" class="btn-action btn-primary btn-sm" id="btnModeFull">Taller completo</button>
+          <button type="button" class="btn-action btn-secondary btn-sm" id="btnModeQuick">Modo rápido</button>
+          <button type="button" class="btn-action btn-secondary btn-sm" id="btnResetQuiz" title="Borrar respuestas"><i class="fas fa-eraser"></i></button>
+        </div>
+      </div>
+      <div class="quiz-questions-list" id="quizQuestionsContainer"></div>
+    </div>
+  </section>
+
+  <!-- ====================== HOJA 8 · CIERRE ====================== -->
+  <section class="sheet-page" id="sheet-13" data-nav="Evaluación y PDF"
+    data-badge="RÚBRICA" data-title="RÚBRICA DE EVALUACIÓN Y ENTREGA FINAL"
+    data-subtitle="Criterios de valoración (escala 1.0–5.0), metacognición y reporte"
+    data-tag="CIERRE" data-tag-sub="Entrega oficial">
+    <div class="sheet-body">
+      <h3 class="section-title"><i class="fas fa-clipboard-check"></i> Rúbrica de desempeño</h3>
+      <table class="rubric-table">
+        <thead>
+          <tr><th>Criterio</th><th class="lvl-superior">Superior (4.6–5.0)</th><th class="lvl-alto">Alto (4.0–4.5)</th><th class="lvl-basico">Básico (3.0–3.9)</th><th class="lvl-bajo">Bajo (1.0–2.9)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Conceptos básicos</strong></td><td>Distingue \(\Delta x\) de \(d\) y \(\bar v\) de la rapidez media, con signos y unidades correctos.</td><td>Calcula \(\Delta x\) y \(\bar v\) con errores menores de signo.</td><td>Calcula la distancia pero la usa como desplazamiento.</td><td>Confunde posición, desplazamiento y distancia.</td></tr>
+          <tr><td><strong>MRU</strong></td><td>Aplica \(x = x_0 + vt\), interpreta pendiente y área y resuelve el método del flotador.</td><td>Aplica la ecuación pero duda al interpretar el signo de \(v\).</td><td>Usa \(d = vt\) sin posición inicial ni sistema de referencia.</td><td>Asocia la pendiente de \(x\)–\(t\) con la trayectoria.</td></tr>
+          <tr><td><strong>MUA</strong></td><td>Elige la ecuación adecuada, incluida \(v^2 = v_0^2 + 2a\Delta x\), y combina MRU y MUA en la detención.</td><td>Resuelve problemas de un solo tramo con \(a\) constante.</td><td>Sustituye datos pero omite el término \(\tfrac12 at^2\).</td><td>Trata el MUA como si fuera MRU.</td></tr>
+          <tr><td><strong>Interpretación gráfica</strong></td><td>Construye \(x\)–\(t\) y \(a\)–\(t\) a partir de \(v\)–\(t\) usando áreas y pendientes, con áreas negativas.</td><td>Lee pendientes y áreas en tramos simples.</td><td>Lee valores puntuales pero no pendientes ni áreas.</td><td>Interpreta la gráfica como un dibujo del camino.</td></tr>
+          <tr><td><strong>Cuaderno o informe</strong></td><td>Transcripción pulcra, gráficas con ejes rotulados y unidades en cada paso.</td><td>Transcripción ordenada y legible.</td><td>Transcripción incompleta.</td><td>Sin evidencias escritas.</td></tr>
+        </tbody>
+      </table>
+
+      <article class="mission-banner metacog">
+        <h3><i class="fas fa-brain"></i> REFLEXIÓN METACOGNITIVA</h3>
+        <ol>
+          <li>¿Cómo puede un cuerpo tener velocidad cero y, en ese mismo instante, aceleración distinta de cero? Da un ejemplo con una gráfica \(v\)–\(t\).</li>
+          <li>Si en una vía la rapidez permitida se duplica, ¿cuántas veces aumenta la distancia de frenado? ¿Qué implica para el diseño de pasos de fauna?</li>
+          <li>¿Cómo usarías el método del flotador y una gráfica \(x\)–\(t\) para comparar el río Otún o el río Consota en época seca y en época de lluvias?</li>
+        </ol>
+        <p class="note">* Responde de puño y letra en tu cuaderno o en tu informe.</p>
+      </article>
+
+      <div class="summary-student" id="summaryStudentInfo"></div>
+
+      <article class="submission-box">
+        <div class="icon"><i class="fas fa-award"></i></div>
+        <h3>Calificación y entrega</h3>
+        <p>Genera tu reporte de resultados, cópialo para enviarlo al docente y guarda la guía en PDF tamaño carta para tu portafolio.</p>
+        <div class="actions">
+          <button type="button" class="btn-action btn-primary" id="btnSubmitResults"><i class="fas fa-check-double"></i> Calificar y generar reporte</button>
+          <button type="button" class="btn-action btn-pdf" id="btnExportPdfMain"><i class="fas fa-file-pdf"></i> Exportar guía a PDF</button>
+        </div>
+      </article>
+
+      <h3 class="section-title"><i class="fas fa-book"></i> Referencias</h3>
+      <ul class="references-list">
+        <li>Serway, R. A., &amp; Jewett, J. W. (2008). <em>Física para ciencias e ingeniería</em> (7.ª ed., Vol. 1, cap. 2). Cengage Learning.</li>
+        <li>Young, H. D., &amp; Freedman, R. A. (2009). <em>Física universitaria</em> (12.ª ed., Vol. 1, cap. 2). Pearson Educación.</li>
+        <li>Hewitt, P. G. (2007). <em>Física conceptual</em> (10.ª ed., caps. 2–3). Pearson Educación.</li>
+        <li>World Meteorological Organization. (2010). <em>Manual on stream gauging: Vol. I. Fieldwork</em> (WMO-No. 1044). WMO.</li>
+      </ul>
+      <p class="copyright-note">Guía-taller interactiva de Física · Administración del Medio Ambiente · Universidad Tecnológica de Pereira. Elaborada por Luis Hernando Blandón Dávila.<br>© 2026 Luis Hernando Blandón Dávila · Todos los derechos reservados. Prohibida su copia, modificación o distribución, total o parcial, sin autorización escrita del autor.</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/guide-config.js"></script>
+<script src="js/sim-kit.js"></script>
+<script src="js/simulations.js"></script>
+<script src="js/workshop.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>
